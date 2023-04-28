@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRUD</title>
+</head>
+<body>
+    <h1>Create Student</h1>
+    <form action="{% url 'create_student' %}" method="post">
+        {% csrf_token %}
+        <input type="text" name="name" placeholder="Name">
+        <input type="number" name="age" placeholder="Age">
+        <input type="submit" value="Create">
+    </form>
+
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Update</th>
+            <th>Delete</th>
+        </tr>
+        {% for stu in all_students %}
+        <tr>
+            <td>{{ stu.name }}</td>
+            <td>{{ stu.age }}</td>
+            <td><a href="{% url 'update_student' stu.id %}">Update</a></td>
+            <td><a href="{% url 'delete_student' stu.id %}">Delete</a></td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

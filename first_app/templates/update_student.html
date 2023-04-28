@@ -1,0 +1,7 @@
+<h1>Update Student</h1>
+<form action="{% url 'save_update_student' studentOb.id %}" method="post">
+    {% csrf_token %}
+    <input type="text" name="name" placeholder="Name" value="{{studentOb.name}}">
+    <input type="number" name="age" placeholder="Age" value="{{studentOb.age}}">
+    <input type="submit" value="Update">
+</form>
